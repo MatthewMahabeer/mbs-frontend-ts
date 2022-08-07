@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
+
+:root {
+  --alice-blue: #e3f2fd;
+  --uranian-blue: #bbdefb;
+  --light-sky-blue: #90caf9;
+  --blue-jeans: #64b5f6;
+  --blue-jeans-warm: #42a5f5;
+  --dodger-blue: #2196f3;
+  --bleu-de-france: #1e88e5;
+  --bright-navy-blue: #1976d2;
+  --green-blue: #1565c0;
+  --cobalt-blue: #0d47a1;
+}
+
 html,
 body {
   padding: 0;
@@ -15,12 +31,422 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.modal-content {
+  position: relative;
+  width: 30rem;
+  height: 8rem;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.modal-content-delete {
+  position: relative;
+  width: 27rem;
+  height: 11rem;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.delete-button {
+  background: white;
+  border: 1px solid red;
+  border-radius: 5px;
+  color: red;
+  text-transform: capitalize;
+  padding: 5px 12px;
+  box-sizing: border-box;
+}
+
+.delete-button:hover {
+  background: red;
+  color: white;
+}
+
+.cancel-button {
+  background: white;
+  border: 1px solid var(--green-blue);
+  padding: 5px 12px;
+  border-radius: 5px;
+  color: var(--green-blue);
+  text-transform: capitalize;
+  box-sizing: border-box;
+}
+
+.cancel-button:hover {
+  background: var(--green-blue);
+  color: white;
+}
+
+.modal-content-brand {
+  position: relative;
+  width: 21em;
+  height: 11rem;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.modal-content-model {
+  position: relative;
+  width: 33em;
+  height: 10rem;
+  border-radius: 12px;
+  background: white;
+}
+
+.modal-content-branch {
+  position: relative;
+  width: 44em;
+  height: 22rem;
+  border-radius: 12px;
+  background: white;
+}
+
+.delete-button-row {
+  position: relative;
+  margin-right: 0;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 20px;
+}
+
+.add-button-row {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.modal-content-department {
+  position: relative;
+  width: 35em;
+  height: 22rem;
+  border-radius: 12px;
+  background: white;
+}
+
+.modal-header {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-family: "Cabin";
+  font-style: bold;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--bright-navy-blue);
+}
+
+.brand-text-field {
+  width: 70%;
+  height: 2rem;
+  border-radius: 5px;
+  border: 1px solid var(--green-blue);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--green-blue);
+}
+
+.modal-brand-header {
+  margin-top: 1rem;
+  text-align: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Cabin";
+  font-style: bold;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--bright-navy-blue);
+}
+
+.modal-cancel {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.brandinputlabel {
+  margin-top: 10px;
+  margin-left: 7px;
+  padding-right: 1rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  height: 20px;
+}
+
+.brandinput {
+  padding: 0.35rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  border: 0.5px var(--bright-navy-blue) solid;
+  border-radius: 3px;
+  height: 35px;
+}
+.modelinputlabel {
+  margin-top: 1rem;
+  margin-left: 18.5px;
+  padding-right: 1rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  display: block;
+}
+
+.modelinput {
+  padding: 0.35rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  border: 0.5px var(--bright-navy-blue) solid;
+  border-radius: 3px;
+  margin: 5px 5px;
+  width: 12rem;
+}
+
+.brandinput:focus {
+  outline: 1.5px var(--bright-navy-blue) solid;
+}
+
+.brand-save {
+  padding: 0.6rem;
+  margin-left: 1rem;
+  border-radius: 0.15rem;
+  background: var(--bright-navy-blue);
+  color: aliceblue;
+  font-family: "Cabin";
+  font-weight: 100;
+  border: transparent;
+  cursor: pointer;
+  height: 35px;
+}
+
+.model-save {
+  padding: 0.6rem;
+  margin-top: 2rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+  border-radius: 0.4rem;
+  background: var(--bright-navy-blue);
+  color: aliceblue;
+  font-family: "Cabin";
+  font-weight: 100;
+  border: transparent;
+  cursor: pointer;
+}
+.modell-save {
+  padding: 0.6rem;
+  margin-top: 2rem;
+  margin-left: 0;
+  border-radius: 0.4rem;
+  background: var(--bright-navy-blue);
+  color: aliceblue;
+  font-family: "Cabin";
+  font-weight: 100;
+  border: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.modal-body {
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.modal-footer {
+  position: absolute;
+  bottom: 50px;
+  height: 20px;
+  width: 100%;
+}
+
+.modal-content-paragraph {
+  width: 80%;
+  padding: 7px;
+  margin: 7px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.branchmodalerror {
+  font-family: "Cabin";
+  font-size: 11px;
+  color: red;
+  margin-left: 5px;
+}
+
+.branch-contact-title {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0;
+  font-family: "Cabin";
+  color: #0d47a1;
+}
+
+.branch-flex {
+  display: flex;
+  padding: 1rem;
+  gap: 20px;
+}
+
+.branch-contact-input-label {
+  margin-left: 7px;
+  padding-right: 1rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  display: block;
+}
+
+.b-c-i-l {
+  padding: 0.35rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  border: 0.5px var(--bright-navy-blue) solid;
+  border-radius: 3px;
+  margin: 5px 5px;
+  width: 9rem;
+}
+.serial-find {
+  padding: 0.35rem;
+  font-family: "Cabin";
+  font-weight: 100;
+  font-size: 15px;
+  border: 0.5px var(--bright-navy-blue) solid;
+  border-radius: 3px;
+  margin: 5px 5px;
+  width: 13rem;
+}
+
+.branch-save {
+  height: 2.5rem;
+  border-radius: 0.4rem;
+  background: var(--bright-navy-blue);
+  color: aliceblue;
+  font-family: "Cabin";
+  font-weight: 100;
+  border: transparent;
+  cursor: pointer;
+  position: relative;
+  float: right;
+  margin-right: 20px;
+}
+
+.department-save {
+  height: 2.5rem;
+  border-radius: 0.4rem;
+  background: transparent;
+  border: 1px solid #1976d2;
+  color: #1976d2;
+  font-family: "Cabin";
+  font-weight: 100;
+  border: transparent;
+  cursor: pointer;
+  position: relative;
+  float: right;
+  margin-right: 20px;
+  margin-top: 1rem;
+}
+
+.sctcontainer {
+  margin: auto 13px;
+  display: flex;
+}
+
+.machine-found {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  padding: 0.3rem;
+  background: var(--green-blue);
+  font-family: "Cabin";
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  color: aliceblue;
+  position: relative;
+  border-radius: 3px;
+  display: flex;
+  white-space: nowrap;
+}
+
+.branch-save {
+  height: 2.5rem;
+  border-radius: 0.4rem;
+  background: var(--bright-navy-blue);
+  color: aliceblue;
+  font-family: "Cabin";
+  font-weight: 100;
+  border: transparent;
+  cursor: pointer;
+  position: absolute;
+  bottom: 25px;
+  right: 15px;
+}
+
+table {
+  font-family: "Cabin";
+  border-collapse: collapse;
+  width: 35%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.typebutton {
+  padding: 5px;
+  background: white;
+  border: 1px solid var(--dodger-blue);
+  margin-top: 5px;
+  height: 30px;
+  margin-right: 20.5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.typebutton:hover {
+  background: var(--dodger-blue);
+  color: white;
+}
+
+.typebutton:focus {
+  background: var(--dodger-blue);
+  color: white;
 }
