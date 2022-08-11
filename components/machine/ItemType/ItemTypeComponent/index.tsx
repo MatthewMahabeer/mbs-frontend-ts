@@ -10,7 +10,7 @@ import { addMachine } from "../../../../pages/api/apiRoutes";
 import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Modal, { ModalHandle, operator } from "../Modal";
-
+import { useSpring, animated } from "react-spring";
 // @ts-ignore
 const Alert = React.forwardRef(function Alert(props, ref) {
   // @ts-ignore
@@ -25,6 +25,7 @@ type ItemTypeComponentProps = {
   setBrand: (brand: Brand | undefined) => void;
   setModel: (model: Model | undefined) => void;
   refetchBrands?: () => void;
+  refetchModels?: () => void;
 };
 
 type MachineFormValues = {
@@ -50,6 +51,7 @@ const ItemTypeComponent = ({
   setBrand,
   setModel,
   refetchBrands,
+  refetchModels,
 }: ItemTypeComponentProps): JSX.Element => {
   const [selectedItem, setSelectedItem] = useState<Brand | Model | null>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -81,6 +83,12 @@ const ItemTypeComponent = ({
   //declare a ref to use in useImperativeHandle
   const modalRef = useRef<ModalHandle>(null);
 
+  const springStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 500 },
+  });
+
   const toggleR = {
     addBrand: useCallback(() => {
       // @ts-ignore
@@ -93,6 +101,10 @@ const ItemTypeComponent = ({
     addModel: useCallback(() => {
       // @ts-ignore
       modalRef.current?.open();
+      setOperator({
+        mode: "add",
+        operator: "model",
+      });
     }, [modalRef]),
   };
 
@@ -146,7 +158,10 @@ const ItemTypeComponent = ({
               Add Brand
             </button>
           ) : itemType === "model" ? (
-            <button className={styles.addbrandbutton}>
+            <button
+              className={styles.addbrandbutton}
+              onClick={toggleR.addModel}
+            >
               Add a Model for {brand?.name}
             </button>
           ) : (
@@ -160,7 +175,10 @@ const ItemTypeComponent = ({
               {isEmpty(Brands) ? (
                 <div className={styles.brandtitle}>No Brands Found</div>
               ) : !isEmpty(Brands) && brand == null ? (
-                <div className={styles.brandlistcontainer}>
+                <animated.div
+                  style={springStyle}
+                  className={styles.brandlistcontainer}
+                >
                   {Brands.map((brand: Brand) => {
                     return (
                       <button
@@ -172,7 +190,7 @@ const ItemTypeComponent = ({
                       </button>
                     );
                   })}
-                </div>
+                </animated.div>
               ) : !isEmpty(Brands) && brand != null ? (
                 <div className={styles.brandlistcontainer}>
                   <button className={styles.brandlistitem}>
@@ -195,7 +213,10 @@ const ItemTypeComponent = ({
             isEmpty(Models) ? (
               <div className={styles.brandtitle}>No Models Found</div>
             ) : !isEmpty(Models) && model == null ? (
-              <div className={styles.brandlistcontainer}>
+              <animated.div
+                style={springStyle}
+                className={styles.brandlistcontainer}
+              >
                 {Models.map((model: Model) => (
                   <button
                     className={styles.brandlistitem}
@@ -205,7 +226,7 @@ const ItemTypeComponent = ({
                     <div className={styles.brand}>{model.name}</div>
                   </button>
                 ))}
-              </div>
+              </animated.div>
             ) : !isEmpty(Models) && model != null ? (
               <div className={styles.brandlistcontainer}>
                 <button className={styles.brandlistitem}>
@@ -269,6 +290,7 @@ const ItemTypeComponent = ({
         brand={brand}
         ref={modalRef}
         refetchBrands={refetchBrands}
+        refetchModels={refetchModels}
       />
     </React.Fragment>
   );

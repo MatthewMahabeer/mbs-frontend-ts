@@ -24,6 +24,7 @@ const Create: NextPage = () => {
     data: models,
     isLoading: loadingModels,
     isError: errorModels,
+    refetch: refetchModels,
   } = useQuery(["models"], () => getModels(selectedBrand?.id), {
     enabled: selectedBrand !== undefined,
     onSuccess: () => {
@@ -57,6 +58,7 @@ const Create: NextPage = () => {
           model={selectedModel}
           setBrand={setSelectedBrand}
           setModel={setSelectedModel}
+          refetchModels={refetchModels}
         />
       )}
       {selectedModel != null && (

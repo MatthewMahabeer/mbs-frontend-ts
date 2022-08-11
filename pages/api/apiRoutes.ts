@@ -29,6 +29,12 @@ export interface Machine {
   type?: string;
 }
 
+export interface ModelInput {
+  brandId: number;
+  name: string;
+  type: string;
+}
+
 export const getBrands = async (): Promise<Brand[]> => {
   const res = await baseUrl.get("/brands");
   return res.data;
@@ -44,8 +50,8 @@ export const addBrand = async (name: string): Promise<Brand> => {
   return res.data;
 }
 
-export const addModel = async (brandId: string, name: string): Promise<Model> => {
-  const res = await baseUrl.post(`/models/${brandId}`, { name });
+export const addModel = async (data: ModelInput): Promise<Model> => {
+  const res = await baseUrl.post(`/models/${data.brandId}`, data);
   return res.data;
 }
 
