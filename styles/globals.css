@@ -101,7 +101,7 @@ a {
 .modal-content-model {
   position: relative;
   width: 33em;
-  height: 10rem;
+  height: 11.5rem;
   border-radius: 12px;
   background: white;
 }
@@ -177,6 +177,26 @@ a {
   font-weight: 400;
   font-size: 20px;
   color: var(--bright-navy-blue);
+}
+
+.modal-model-form-row {
+  position: relative;
+  margin-top: 17px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.model-text-field {
+  width: 14.5rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--green-blue);
 }
 
 .modal-cancel {
