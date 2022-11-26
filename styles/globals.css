@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
 
 :root {
   --alice-blue: #e3f2fd;
@@ -204,6 +205,9 @@ a {
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+}
+.modal-cancel:hover {
+  color: var(--green-blue);
 }
 
 .modal-title {

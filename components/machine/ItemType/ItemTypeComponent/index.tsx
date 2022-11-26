@@ -11,6 +11,7 @@ import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Modal, { ModalHandle, operator } from "../Modal";
 import { useSpring, animated } from "react-spring";
+import { AxiosError } from "axios";
 // @ts-ignore
 const Alert = React.forwardRef(function Alert(props, ref) {
   // @ts-ignore
@@ -179,7 +180,7 @@ const ItemTypeComponent = ({
                   style={springStyle}
                   className={styles.brandlistcontainer}
                 >
-                  {Brands.map((brand: Brand) => {
+                  {Brands?.map((brand: Brand) => {
                     return (
                       <button
                         className={styles.brandlistitem}

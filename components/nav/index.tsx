@@ -1,13 +1,19 @@
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { destroyCookie } from "nookies";
 
 export default function Nav() {
   const router = useRouter();
 
+  function logout() {
+    destroyCookie(null, "mbs_emp_user_token");
+    router.push("/login");
+  }
+
   return (
     <div className={styles.nav}>
-      <div className={styles.smsbanner}>Managed Business Services</div>
+      <div className={styles.smsbanner}>MBS</div>
       <div className={styles.navigator}>
         <nav>
           <ul>
@@ -57,8 +63,8 @@ export default function Nav() {
                     <path
                       d="M26 6H23V0H5V6H2C1.46957 6 0.960859 6.21071 0.585786 6.58579C0.210714 6.96086 0 7.46957 0 8V18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H5V26H23V20H26C26.5304 20 27.0391 19.7893 27.4142 19.4142C27.7893 19.0391 28 18.5304 28 18V8C28 7.46957 27.7893 6.96086 27.4142 6.58579C27.0391 6.21071 26.5304 6 26 6ZM7 2H21V6H7V2ZM21 24H7V14H21V24ZM26 18H23V12H5V18H2V8H26V18Z"
                       fill={
-                        router.pathname == "/machines/create" ||
-                        router.pathname == "/machines/view"
+                        router.pathname == "/machine/create" ||
+                        router.pathname == "/machine/view"
                           ? "#1565C0"
                           : "white"
                       }
@@ -193,36 +199,33 @@ export default function Nav() {
               </div>
             </Link>
 
-            <Link passHref href="/logout">
-              <div
-                className={
-                  router.pathname == "/logout"
-                    ? styles.listcomponent
-                    : styles.listcomponentdefault
-                }
-              >
-                <div className={styles.svg}>
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 19H3C2.46957 19 1.96086 18.7893 1.58579 18.4142C1.21072 18.0391 1 17.5304 1 17V3C1 2.46957 1.21072 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H7M19 10L14 15L17.875 10L14 5L19 10ZM19 10C19 10 11.6863 10 7 10"
-                      stroke={
-                        router.pathname == "/logout" ? "#1565C0" : "white"
-                      }
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className={styles.text}>Logout</div>
+            <div
+              onClick={() => logout()}
+              className={
+                router.pathname == "/logout"
+                  ? styles.listcomponent
+                  : styles.listcomponentdefault
+              }
+            >
+              <div className={styles.svg}>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 19H3C2.46957 19 1.96086 18.7893 1.58579 18.4142C1.21072 18.0391 1 17.5304 1 17V3C1 2.46957 1.21072 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H7M19 10L14 15L17.875 10L14 5L19 10ZM19 10C19 10 11.6863 10 7 10"
+                    stroke={router.pathname == "/logout" ? "#1565C0" : "white"}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
-            </Link>
+              <div className={styles.text}>Logout</div>
+            </div>
           </ul>
         </nav>
       </div>

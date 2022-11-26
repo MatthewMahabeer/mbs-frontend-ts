@@ -1,0 +1,69 @@
+.loginpage {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bright-navy-blue);
+}
+
+.logincomponent {
+  margin: auto;
+  position: relative;
+  width: 30rem;
+  height: 15rem;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 11px;
+  padding: 0;
+}
+
+.logincomponent .loginheadercomponent {
+  height: 30px;
+  width: 100%;
+  border-bottom: 0.5px solid black;
+  text-align: center;
+  font-size: 13px;
+  font-family: "Cabin";
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+}
+
+.login-row {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px 50px;
+  gap: 12px;
+}
+
+.login-row span input {
+  width: 100%;
+  height: 35px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-family: "Cabin";
+  font-size: 15px;
+  margin: 0;
+}
+
+.login-row p {
+  margin: 0;
+  padding: 0;
+  color: red;
+}
+
+.login-row button {
+  padding: 5px;
+  font-family: "Cabin";
+  font-size: 15.5px;
+  color: white;
+  background: var(--green-blue);
+  border: transparent;
+  border-radius: 5px;
+}
+
+.login-row button:hover {
+  background: white;
+  border: var(--green-blue) solid 1px;
+  color: var(--green-blue);
+}
